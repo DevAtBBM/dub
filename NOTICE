@@ -1,0 +1,49 @@
+AffGo link-service
+==================
+
+This repository is a fork of Dub (https://github.com/dubinc/dub), operated as
+the link layer for AffGo (https://affgo.io).
+
+Fork point
+----------
+Upstream:     dubinc/dub
+Commit:       4b40951c3bbe2d4ac4fff84a0127fbeee8e7c6ad
+Forked:       2026-09-07
+
+Licence
+-------
+Dub's open-source core is licensed under the GNU Affero General Public License
+v3.0. This fork is distributed under the same licence, and its source is
+published at https://github.com/DevAtBBM/dub.
+
+AGPL section 13 applies to this deployment: anyone who interacts with this
+service over a network is offered its complete corresponding source at the URL
+above.
+
+Upstream copyright notices and licence headers are retained throughout. They
+are not ours to remove.
+
+Modifications
+-------------
+1. Removed the commercially-licensed enterprise directories, which are NOT
+   covered by the AGPL and require a Dub Enterprise subscription to run in
+   production:
+     - apps/web/app/(ee)
+     - apps/web/app/app.dub.co/(dashboard)/[slug]/(ee)
+   Their licence terms are in apps/web/app/(ee)/LICENSE.md upstream.
+
+2. Removed dashboard pages and integration routes left dangling by (1), where
+   AffGo has no use for the feature (partner payouts, domain registration,
+   identity verification, bounties).
+
+3. Added a click-forwarding job that drains the workspace click-event stream
+   and delivers each click to AffGo. Written independently against the AGPL
+   producer side; it is not derived from the removed enterprise code.
+
+Trademark
+---------
+"Dub" is a trademark of Dub Technologies. This fork is not affiliated with,
+endorsed by, or sponsored by them. AffGo is an independent product; the Dub
+name and logo are not used in AffGo's branding. Describing AffGo as "built on
+the open-source Dub link engine" is a statement of fact about this dependency,
+not a claim of affiliation.
