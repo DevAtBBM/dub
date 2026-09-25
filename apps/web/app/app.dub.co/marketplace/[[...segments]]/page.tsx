@@ -6,10 +6,11 @@ import { APP_DOMAIN, constructMetadata } from "@dub/utils";
 import { Category } from "@prisma/client";
 import { Metadata } from "next";
 
-export {
-  generateStaticParams,
-  revalidate,
-} from "@/ui/program-marketplace/utils/default-exports";
+// AffGo self-hosting: rendered per request instead of prerendered from the
+// database at build time. A self-hosted image build has no database to read
+// (upstream builds on Vercel against production). This page is not used by
+// the AffGo deployment.
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata(props: {
   params: Promise<{ segments?: string[] }>;
